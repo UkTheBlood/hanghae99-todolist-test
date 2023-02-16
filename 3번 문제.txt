@@ -1,0 +1,21 @@
+3. 삭제 기능이 동작하지 않음
+
+1) switch의 case문에 DELETE가 없음
+ => payload에 새로운 todo의 배열을 만들어줌
+ => 삭제된 id를 제외한 나머지 todo들만 값을 가지고 옴
+
+   const onDeleteTodo = (id) => {
+    const newTodo = todos.filter(function(todo) {
+      return todo.id !== id
+    });
+
+    dispatch(deleteTodo(newTodo));
+  };
+
+2) 가져온 값을 case로 만들어 initialtodo에 넣어줌
+
+    case DELETE_TODO:
+      return {
+        ...state,
+        initialtodo: action.payload
+      }

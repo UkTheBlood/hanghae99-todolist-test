@@ -1,0 +1,35 @@
+1. 추가하기 버튼을 클릭해도 추가한 아이템이 화면에 표시되지 않음
+2. 추가하기 버튼 클릭 후 기존에 존재하던 아이템들이 사라짐
+=> 둘 다 초기값을 제대로 못 가져오고, 보여줄 때 또한 잘못 보여줌
+
+1) 우선 기본 값을 제대로 작동 안 되게 받아오는 것 같아서 기본값을 다시 설정
+const initialtodo = [
+  { id: 1, title: "리액트", desc: "리액트 기초 공부", done: false },
+  { id: 2, title: "스프링", desc: "스프링 기초 공부", done: false },
+  { id: 3, title: "노드", desc: "끝났다", done: true },
+]
+
+// initial state
+const initialState = {
+  initialtodo: initialtodo
+};
+
+
+2) Form에서 newTodo 만들어서 payload에 넣어줌
+
+  const addButton = () => {
+    const newTodo = {
+      id: Math.random(),
+      title: todo.title,
+      body: todo.body,
+      isDone: false,
+    }
+
+    dispatch(addTodo(newTodo))
+  }
+
+
+3) 초기값을 넣어주고,  payload에 newTodo를 넣어 보여주기
+
+initialtodo: [...state.initialtodo, action.payload],
+

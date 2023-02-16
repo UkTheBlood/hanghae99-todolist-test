@@ -1,0 +1,27 @@
+4, 5번. 상세 페이지에 진입 하였을 때 데이터가 업데이트 되지 않음. 
+
+1) useParams 추가
+const params = useParams();
+
+2) 넘겨온 todos를 find로 id가 맞는 것을 return
+
+const todos = useSelector((state) => state.todos.initialtodo);
+
+const datas = todos.find((item) => {
+    return String(item.id) === params.id
+})
+
+3) html부분에 가져오는 것들 datas로 변경
+
+<div>ID :{datas.id}</div>
+<StButton
+    borderColor="#ddd"
+    onClick={() => {
+    navigate("/");
+    }}
+>
+    이전으로
+</StButton>
+</StDialogHeader>
+<StTitle>{datas.title}</StTitle>
+<StBody>{datas.body}</StBody>

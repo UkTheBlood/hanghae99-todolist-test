@@ -1,0 +1,7 @@
+6. 취소 버튼 클릭시 기능이 작동하지 않음
+
+onClick={onToggleStatusTodo} 이 부분이 문제였음
+
+=> onClick={() => onToggleStatusTodo(todo.id)}
+
+이렇게 바꾸었음
